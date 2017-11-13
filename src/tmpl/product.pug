@@ -1,0 +1,24 @@
+mixin product(p)
+  .product(class=p.disabled ? 'product_disabled' : '')
+    .product__card
+      .product__header Сказочное заморское яство
+      .product__header.product__header_hover Котэ не одобряет?
+      .product__name= p.name
+      .product__taste= p.taste
+      ul.product__props
+        each prop in p.props
+          li!= prop
+      .product__weight
+        span= p.weight
+          small кг
+    .product__footer
+      | Чего сидишь? Порадуй котэ,
+      |
+      a.product__buy-link(href='#') купи
+    .product__footer.product__footer_selected= p.footerSelected
+    .product__footer.product__footer_disabled
+      | Печалька,
+      |
+      = p.taste
+      |
+      | закончился.

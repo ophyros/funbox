@@ -1,0 +1,29 @@
+{
+  "name": "funbox",
+  "version": "1.0.0",
+  "description": "funbox test",
+  "author": "ophyros",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "latest",
+    "babel-preset-es2015": "latest",
+    "browser-sync": "latest",
+    "gulp": "latest",
+    "gulp-concat": "latest",
+    "gulp-postcss": "latest",
+    "gulp-rename": "latest",
+    "gulp-watch": "latest",
+    "postcss-cssnext": "latest",
+    "postcss-inline-svg": "latest",
+    "postcss-partial-import": "latest",
+    "postcss-nested": "latest",
+    "postcss-svgo": "latest"
+  },
+  "dependencies": {
+    "gulp-csso": "latest",
+    "gulp-file-include": "latest",
+    "gulp-pug": "^3.3.0",
+    "postcss-csso": "latest",
+    "pug": "^2.0.0-rc.4"
+  }
+}

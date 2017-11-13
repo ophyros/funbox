@@ -1,0 +1,19 @@
+:root {
+  --font-main: 'Trebuchet MS', 'Arial', sans-serif;
+  --font-header: 'Exo 2', 'Arial', sans-serif;
+
+  --color-text-dark: #000000;
+  --color-text-gray: #666666;
+  --color-text-light: #ffffff;
+  --color-text-disabled: #b3b3b3;
+  --color-text-link: #1698d9;
+  --color-text-yellow: #ffff66;
+  --color-text-hover: #e62e7a;
+
+  --color-bg-card: #f2f2f2;
+  --color-bg-default: #1698d9;
+  --color-bg-hover: #2ea8e6;
+  --color-bg-selected: #d91667;
+  --color-bg-disabled: #b3b3b3;
+
+}
