@@ -5,8 +5,8 @@
     position: relative;
     width: 320px;
     height: 480px;
-    margin-bottom: 17px;
-    padding: 26px 14px 16px 49px;
+    margin-bottom: 13px;
+    padding: 23px 14px 16px 47px;
     border-radius: 10px;
     background-image: svg-load('../../i/border.svg',
                                 fill='none',
@@ -42,7 +42,7 @@
   &__header {
     font-size: 16px;
     color: var(--color-text-gray);
-    margin-bottom: 19px;
+    margin-bottom: 10px;
 
     &_hover {
       display: none;
@@ -54,7 +54,7 @@
     font-size: 48px;
     font-weight: bold;
     color: var(--color-text-dark);
-    margin: 0;
+    margin-bottom: 5px;
   }
 
   &__taste {
@@ -70,12 +70,13 @@
     list-style: none;
     font-size: 14px;
     color: var(--color-text-gray);
+    line-height: 1.15;
   }
 
   &__weight {
     position: absolute;
-    bottom: 16px;
-    right: 14px;
+    bottom: 15px;
+    right: 16px;
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -100,7 +101,7 @@
 
   &__footer {
     color: var(--color-text-light);
-    font-size: 16px;
+    font-size: 13px;
     text-align: center;
 
     & a {
