@@ -1,24 +1,26 @@
-mixin product(p)
-  .product(class=p.disabled ? 'product_disabled' : '')
-    .product__card
-      .product__header Сказочное заморское яство
-      .product__header.product__header_hover Котэ не одобряет?
-      .product__name= p.name
-      .product__taste= p.taste
-      ul.product__props
-        each prop in p.props
-          li!= prop
-      .product__weight
-        span= p.weight
-          small кг
-    .product__footer
-      | Чего сидишь? Порадуй котэ,
-      |
-      a.product__buy-link(href='#') купи
-    .product__footer.product__footer_selected= p.footerSelected
-    .product__footer.product__footer_disabled
-      | Печалька,
-      |
-      = p.taste
-      |
-      | закончился.
+mixin product(p, index)
+  .product
+    input.product__checkbox(
+                            type = 'checkbox',
+                            name = 'product',
+                            id = 'product' + index,
+                            disabled = p.disabled)
+    label.product__card(for = 'product' + index)
+      .product__inner
+        p.product__header.product__header_default= p.headerDefault
+        p.product__header.product__header_hover= p.headerHover
+        h2.product__name= p.name
+        p.product__taste= p.taste
+        ul.product__props
+          each prop in p.props
+            li.product__prop!= prop
+        img.product__img(src=p.img)
+        p.product__weight
+          span= p.weight
+            small= p.weightUnits
+    p.product__footer.product__footer_default
+      = p.footerDefault
+      | 
+      label.product__buy-link(for = 'product' + index)= p.footerLink
+    p.product__footer.product__footer_selected= p.footerSelected
+    p.product__footer.product__footer_disabled= p.footerDisabled

@@ -20,10 +20,13 @@
     "postcss-svgo": "latest"
   },
   "dependencies": {
+    "babelify": "^8.0.0",
+    "browserify": "^14.5.0",
     "gulp-csso": "latest",
     "gulp-file-include": "latest",
     "gulp-pug": "^3.3.0",
     "postcss-csso": "latest",
-    "pug": "^2.0.0-rc.4"
+    "pug": "^2.0.0-rc.4",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

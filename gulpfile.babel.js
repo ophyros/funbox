@@ -9,18 +9,25 @@ import pnested from 'postcss-nested';
 import pcsso from 'postcss-csso';
 import pug from 'gulp-pug';
 import browserSync from "browser-sync";
+import browserify from 'browserify';
+import babelify from 'babelify';
+import source from 'vinyl-source-stream';
+
+import data from './src/data/data.json';
 
 const path = {
 	dist: {
 		html: 'dist/',
-        js: 'dist/js/',
+        jsbabel: 'dist/js/',
+        js: 'dist/js',
 		css: 'dist/css/',
 		img: 'dist/i/',
 		fonts: 'dist/fonts/'
 	},
 	src: {
 		html: 'src/*.pug',
-        js: 'src/js/*.js',
+        js: 'src/js/main.js',
+        jsbabel: 'dist/js/main.js',
 		style: 'src/css/styles.css',
 		img: 'src/i/*.*',
 		fonts: 'src/fonts/**/*'
@@ -48,7 +55,9 @@ const reload = browserSync.reload;
 
 gulp.task('html', () => {
 	gulp.src(path.src.html)
-        .pipe(pug())
+        .pipe(pug({
+            locals: data
+        }))
 		.pipe(gulp.dest(path.dist.html))
 		.pipe(reload({stream: true}));
 });
@@ -75,9 +84,24 @@ gulp.task('styles', () => {
 });
 
 gulp.task('js', () => {
-    gulp.src(path.src.js)
-		.pipe(gulp.dest(path.dist.js));
+    // gulp.src(path.src.js)
+  //       .pipe(gbabel({
+  //           presets: ["es2015"]
+  //       }))
+		// .pipe(gulp.dest(path.dist.jsbabel));
+    browserify(path.src.js, {extensions: ['es6']})
+        .transform("babelify", {presets: ["es2015"]})
+        .bundle()
+        .pipe(source('bundle.js'))
+        .pipe(gulp.dest(path.dist.js));
 });
+
+// gulp.task('jsbundle', () => {
+//     gulp.src(path.src.jsbabel)
+//         .pipe(gbrowserify())
+//         .pipe(gulp.dest(path.dist.js))
+// });
+
 gulp.task('images', () => {
     gulp.src(path.src.img)
 	  .pipe(gulp.dest(path.dist.img));
@@ -92,6 +116,7 @@ gulp.task('build', [
 	'html',
 	'styles',
     'js',
+    // 'jsbundle',
 	'images',
 	'fonts'
 ]);

@@ -1,48 +1,35 @@
 .product {
+  display: block;
+  width: 100%;
+  max-width: 320px;
   font-family: var(--font-main);
 
   &__card {
-    position: relative;
-    width: 320px;
+    display: block;
+    width: 100%;
     height: 480px;
+    padding: 4px;
     margin-bottom: 13px;
-    padding: 23px 14px 16px 47px;
-    border-radius: 10px;
-    background-image: svg-load('../../i/border.svg',
-                                fill='none',
-                                stroke='var(--color-bg-default)');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
+    background: linear-gradient(135deg, transparent 5%, var(--color-bg-default) 5.1%);
+    border-radius: 14px;
+  }
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 19px 10px 12px 43px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, transparent 5%, var(--color-bg-card) 5.1%);
     line-height: 1;
     cursor: pointer;
-
-    &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      bottom: 2px;
-      right: 2px;
-      border-radius: 10px;
-      background-image: url('../i/cat.png'),
-                        svg-load('../../i/border.svg',
-                                  fill='var(--color-bg-card)',
-                                  stroke='var(--color-bg-card)');
-      background-repeat: no-repeat;
-      background-position: left bottom,
-                           center;
-      background-size: auto,
-                       100% 100%;
-      z-index: -1;
-    }
+    overflow: hidden;
   }
 
   &__header {
+    margin: 0 0 10px 0;
     font-size: 16px;
     color: var(--color-text-gray);
-    margin-bottom: 10px;
 
     &_hover {
       display: none;
@@ -51,17 +38,17 @@
   }
 
   &__name {
+    margin: 0 0 5px 0;
     font-size: 48px;
     font-weight: bold;
     color: var(--color-text-dark);
-    margin-bottom: 5px;
   }
 
   &__taste {
+    margin: 0 0 17px 0;
     font-size: 24px;
     font-weight: bold;
     color: var(--color-text-dark);
-    margin-bottom: 17px;
   }
 
   &__props {
@@ -73,25 +60,28 @@
     line-height: 1.15;
   }
 
-  &__weight {
+  &__img {
     position: absolute;
-    bottom: 15px;
-    right: 16px;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  &__weight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
     width: 80px;
     height: 80px;
+    margin: 0;
     border-radius: 50%;
     background-color: var(--color-bg-default);
     text-align: center;
     font-size: 42px;
     color: var(--color-text-light);
-
-    & span {
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
 
     & small {
       display: block;
@@ -100,15 +90,11 @@
   }
 
   &__footer {
-    color: var(--color-text-light);
+    margin: 0;
     font-size: 13px;
     text-align: center;
-
-    & a {
-      color: var(--color-text-link);
-      text-decoration: none;
-      border-bottom: 1px dashed;
-    }
+    color: var(--color-text-light);
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 1); 
 
     &_selected {
       display: none;
@@ -120,75 +106,87 @@
     }
   }
 
-  &_hover {
+  &__buy-link {
+    border-bottom: 1px dashed;
+    color: var(--color-text-link);
+    cursor: pointer;
 
-    & .product__card {
-      background-image: svg-load('../../i/border.svg',
-                                  fill='none',
-                                  stroke='var(--color-bg-hover)');
-    }
-
-    & .product__weight {
-      background-color: var(--color-bg-hover);
+    &:hover {
+      color: var(--color-bg-hover);
     }
   }
 
-  &_selected {
+  &__checkbox {
+    display: block;
+    width: 0;
+    height: 0;
+    appearance: none;
 
-    & .product__card {
-      background-image: svg-load('../../i/border.svg',
-                                  fill='none',
-                                  stroke='var(--color-bg-selected)');
+    /* наведение и фокус, когда продукт не выбран */
+    &:not(:checked):not(.is-changed) + .product__card:hover,
+    &:not(:checked):not(.is-changed):focus + .product__card {
+      background: linear-gradient(135deg, transparent 5%, var(--color-bg-hover) 5.1%);
+
+      & .product__weight {
+        background-color: var(--color-bg-hover);
+      }
     }
 
-    & .product__weight {
-      background-color: var(--color-bg-selected);
-    }
+    /* продукт выбран */
+    &:checked + .product__card,
+    &:checked:focus + .product__card {
+      background: linear-gradient(135deg, transparent 5%, var(--color-bg-selected) 5.1%);
 
-    & .product__footer {
-      display: none;
+      & .product__weight {
+        background-color: var(--color-bg-selected);
+      }
 
-      &_selected {
+      & ~ .product__footer_default {
+        display: none;
+      }
+
+      & ~ .product__footer_selected {
         display: block;
       }
     }
 
-    &.product_hover {
-
-      & .product__header {
+    /* продукт выбран, фокус/наведение вернулись */
+    &:checked:not(.is-changed) + .product__card:hover,
+    &:checked:not(.is-changed):focus + .product__card {
+      & .product__header_default {
         display: none;
+      }
 
-        &_hover {
-          display: block;
-        }
+      & .product__header_hover {
+        display: block;
       }
     }
-  }
 
-  &_disabled {
-    pointer-events: none;
+    /* продукт недоступен */
+    &:disabled + .product__card {
+      pointer-events: none;
+      background: linear-gradient(135deg, transparent 5%, var(--color-bg-disabled) 5.1%);
 
-    & .product__card {
-      background-image: svg-load('../../i/border.svg',
-                                  fill='rgba(255, 255, 255, .7)',
-                                  stroke='var(--color-bg-disabled)');
-    }
+      & .product__header,
+      & .product__name,
+      & .product__taste,
+      & .product__props {
+        color: var(--color-text-disabled);
+      }
 
-    & .product__header,
-    & .product__name,
-    & .product__taste,
-    & .product__props {
-      color: var(--color-text-disabled);
-    }
+      & .product__img {
+        opacity: .5;
+      }
 
-    & .product__weight {
-      background-color: var(--color-bg-disabled);
-    }
+      & .product__weight {
+        background-color: var(--color-bg-disabled);
+      }
 
-    & .product__footer {
-      display: none;
+      & ~ .product__footer_default {
+        display: none;
+      }
 
-      &_disabled {
+      & ~ .product__footer_disabled {
         display: block;
       }
     }

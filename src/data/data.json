@@ -1,0 +1,60 @@
+{
+  "pageTitle": "Ты сегодня покормил кота?",
+  "products": [
+    {
+      "disabled": false,
+      "headerDefault": "Сказочное заморское яство",
+      "headerHover": "Котэ не одобряет?",
+      "name": "Нямушка",
+      "taste": "с фуа-гра",
+      "props": [
+        "<strong>10</strong> порций",
+        "мышь в подарок"
+      ],
+      "img": "i/cat.png",
+      "weight": "0,5",
+      "weightUnits": "кг",
+      "footerDefault": "Чего сидишь? Порадуй котэ,",
+      "footerLink": "купи",
+      "footerSelected": "Печень утки разварная с артишоками.",
+      "footerDisabled": "Печалька, с фуа-гра закончился"
+    },
+    {
+      "disabled": false,
+      "headerDefault": "Сказочное заморское яство",
+      "headerHover": "Котэ не одобряет?",
+      "name": "Нямушка",
+      "taste": "с рыбой",
+      "props": [
+        "<strong>40</strong> порций",
+        "<strong>2</strong> мыши в подарок"
+      ],
+      "img": "i/cat.png",
+      "weight": "2",
+      "weightUnits": "кг",
+      "footerDefault": "Чего сидишь? Порадуй котэ,",
+      "footerLink": "купи",
+      "footerSelected": "Головы щучьи с чесноком да свежайшая сёмгушка.",
+      "footerDisabled": "Печалька, с рыбой закончился"
+    },
+    {
+      "disabled": true,
+      "headerDefault": "Сказочное заморское яство",
+      "headerHover": "Котэ не одобряет?",
+      "name": "Нямушка",
+      "taste": "с курой",
+      "props": [
+        "<strong>100</strong> порций",
+        "<strong>5</strong> мышей в подарок",
+        "заказчик доволен"
+      ],
+      "img": "i/cat.png",
+      "weight": "5",
+      "weightUnits": "кг",
+      "footerDefault": "Чего сидишь? Порадуй котэ,",
+      "footerLink": "купи",
+      "footerSelected": "Филе из цыплят с трюфелями в бульоне.",
+      "footerDisabled": "Печалька, с курой закончился"
+    }
+  ]
+}
