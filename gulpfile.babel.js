@@ -18,7 +18,6 @@ import data from './src/data/data.json';
 const path = {
 	dist: {
 		html: 'dist/',
-        jsbabel: 'dist/js/',
         js: 'dist/js',
 		css: 'dist/css/',
 		img: 'dist/i/',
@@ -27,7 +26,6 @@ const path = {
 	src: {
 		html: 'src/*.pug',
         js: 'src/js/main.js',
-        jsbabel: 'dist/js/main.js',
 		style: 'src/css/styles.css',
 		img: 'src/i/*.*',
 		fonts: 'src/fonts/**/*'
@@ -84,23 +82,12 @@ gulp.task('styles', () => {
 });
 
 gulp.task('js', () => {
-    // gulp.src(path.src.js)
-  //       .pipe(gbabel({
-  //           presets: ["es2015"]
-  //       }))
-		// .pipe(gulp.dest(path.dist.jsbabel));
     browserify(path.src.js, {extensions: ['es6']})
         .transform("babelify", {presets: ["es2015"]})
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(gulp.dest(path.dist.js));
 });
-
-// gulp.task('jsbundle', () => {
-//     gulp.src(path.src.jsbabel)
-//         .pipe(gbrowserify())
-//         .pipe(gulp.dest(path.dist.js))
-// });
 
 gulp.task('images', () => {
     gulp.src(path.src.img)
@@ -116,7 +103,6 @@ gulp.task('build', [
 	'html',
 	'styles',
     'js',
-    // 'jsbundle',
 	'images',
 	'fonts'
 ]);
